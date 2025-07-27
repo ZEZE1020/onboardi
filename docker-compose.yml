@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: onboardi
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./src/backend
+    env_file: ./src/backend/.env
+    depends_on: [db]
+    ports: ["8000:8000"]
+
+  frontend:
+    build: ./src/frontend
+    ports: ["3000:80"]
+    depends_on: [backend]
+
+volumes:
+  pgdata:
+    driver: local
