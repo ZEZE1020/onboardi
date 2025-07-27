@@ -35,3 +35,15 @@ src/backend/venv
 src/backend/db.sqlite3
 src/agent/db.sqlite3
 src/backend/postgres_data/
+
+# Logs
+src/backend/logs/
+src/agent/logs/ 
+
+# Coverage reports
+.coverage
+htmlcov/  
+
+#miniconda
+miniconda3**
+Miniconda3-latest-Linux-x86_64.sh
