@@ -1,0 +1,46 @@
+name: onboardi
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  - nodejs=18
+
+  - pip
+  - ipython
+  - python-dotenv
+
+  - flake8
+  - black
+  - isort
+  - pre-commit
+
+  - pytest
+  - pytest-cov
+
+  - mkdocs
+  - mkdocs-material
+ 
+
+  - cookiecutter
+  - invoke
+
+  - django
+  - djangorestframework
+  - psycopg2-binary
+  - gunicorn
+
+  - boto3
+  - docker-compose
+
+  - pip:
+    - google-generativeai
+  - pip:
+    - google-generativeai
+    - google-cloud-storage
+    - google-cloud-secret-manager
+    - google-cloud-pubsub
+    - google-auth
+    - mkdocs-awesome-pages-plugin
+    - mkdocs-macros-plugin
