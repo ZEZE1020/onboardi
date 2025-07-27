@@ -6,6 +6,8 @@ __pycache__/
 # Virtual environment
 venv/
 .env
+src/backend/.env
+src/agent/.env
 
 # Distribution / packaging
 build/
@@ -25,3 +27,11 @@ dist/
 # System files
 .DS_Store
 Thumbs.db
+
+#djano venv
+src/backend/venv
+
+# local database
+src/backend/db.sqlite3
+src/agent/db.sqlite3
+src/backend/postgres_data/
