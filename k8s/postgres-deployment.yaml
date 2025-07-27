@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: postgres }
+spec:
+  selector: { matchLabels: { app: postgres } }
+  template:
+    metadata: { labels: { app: postgres } }
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15
+          envFrom:
+            - secretRef: { name: onboardi-secret }
+          ports: [{ containerPort: 5432 }]
