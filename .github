@@ -1,0 +1,47 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: 3.11
+          activate-environment: onboardi
+          environment-file: environment.yml
+
+      - name: Install Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Backend Tests
+        run: |
+          cd src/backend
+          python manage.py migrate
+          pytest .
+
+      - name: Agent Tests
+        run: pytest src/agent/
+
+      - name: Frontend Lint & Build
+        run: |
+          cd src/frontend
+          npm ci
+          npm run lint
+          npm run build
+
+      - name: Smoke Tests
+        run: ./TEST.sh
+
+      - name: Doc Lint
+        run: |
+          npm install -g markdownlint-cli markdown-link-check
+          markdownlint .
+          markdown-link-check README.md
